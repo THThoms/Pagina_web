@@ -16,31 +16,32 @@ let currentTheme = 'frutas';
 
 // listas de símbolos para cada tema
 const cartasFrutas = [
-  "🍎","🍌","🍇","🍉","🍓","🍍","🥝","🍒",
-  "🍑","🍋","🍊","🍐","🍈","🍏","🥭","🍅",
-  "🥥","🍆","🥑","🥕","🌽","🥔","🍠","🥦"
+  "🍎", "🍌", "🍇", "🍉", "🍓", "🍍", "🥝", "🍒",
+  "🍑", "🍋", "🍊", "🍐", "🍈", "🍏", "🥭", "🍅",
+  "🥥", "🍆", "🥑", "🥕", "🌽", "🥔", "🍠", "🥦"
 ];
 
 const cartasTradicional = [
-  "2♠","2♥","2♦","2♣",
-  "3♠","3♥","3♦","3♣",
-  "4♠","4♥","4♦","4♣",
-  "5♠","5♥","5♦","5♣",
-  "6♠","6♥","6♦","6♣",
-  "7♠","7♥","7♦","7♣",
-  "8♠","8♥","8♦","8♣",
-  "9♠","9♥","9♦","9♣",
-  "10♠","10♥","10♦","10♣",
-  "J♠","J♥","J♦","J♣",
-  "Q♠","Q♥","Q♦","Q♣",
-  "K♠","K♥","K♦","K♣",
-  "A♠","A♥","A♦","A♣"
+  "2♠", "2♥", "2♦", "2♣",
+  "3♠", "3♥", "3♦", "3♣",
+  "4♠", "4♥", "4♦", "4♣",
+  "5♠", "5♥", "5♦", "5♣",
+  "6♠", "6♥", "6♦", "6♣",
+  "7♠", "7♥", "7♦", "7♣",
+  "8♠", "8♥", "8♦", "8♣",
+  "9♠", "9♥", "9♦", "9♣",
+  "10♠", "10♥", "10♦", "10♣",
+  "J♠", "J♥", "J♦", "J♣",
+  "Q♠", "Q♥", "Q♦", "Q♣",
+  "K♠", "K♥", "K♦", "K♣",
+  "A♠", "A♥", "A♦", "A♣"
 ];
 
+
 const cartasAnimales = [
-  "🐶","🐱","🐭","🐹","🐰","🦊","🐻","🐼",
-  "🐨","🐯","🦁","🐮","🐷","🐸","🐵","🐔",
-  "🐧","🐦","🐤","🦆","🦉","🦇","🐺","🦄"
+  "🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼",
+  "🐨", "🐯", "🦁", "🐮", "🐷", "🐸", "🐵", "🐔",
+  "🐧", "🐦", "🐤", "🦆", "🦉", "🦇", "🐺", "🦄"
 ];
 
 function seleccionarCartasPorTema() {
@@ -237,14 +238,14 @@ function mostrarFaseMemoria(valores, size, durationMs, callback) {
     // Remover el contador y el info, mantener el grid visible
     info.remove();
     contador.remove();
-    
+
     // Agregar botón de play para continuar al siguiente nivel
     const btnArea = document.createElement('div');
     btnArea.style.display = 'flex';
     btnArea.style.justifyContent = 'center';
     btnArea.style.gap = '20px';
     btnArea.style.marginTop = '20px';
-    
+
     const btnSiguiente = document.createElement('button');
     btnSiguiente.className = 'overlay-icon-btn';
     btnSiguiente.innerHTML = '▶️';
@@ -300,15 +301,15 @@ function resetTurno() {
 
 function mostrarVictoria() {
   const tieneProximoNivel = nivelActual < maxLevelsPerSize - 1;
-  const text = tieneProximoNivel 
-    ? `🎉 ¡Siguiente nivel!` 
+  const text = tieneProximoNivel
+    ? `🎉 ¡Siguiente nivel!`
     : `🎉 ¡Nivel ${nivelActual + 1} completado en ${movimientos} movimientos!`;
   const box = document.createElement('div');
   box.className = 'message-box';
   const msg = document.createElement('div');
   msg.textContent = text;
   box.appendChild(msg);
-  
+
   // Agregar una fruta del siguiente nivel si hay
   if (tieneProximoNivel) {
     const frutasContainer = document.createElement('div');
@@ -317,7 +318,7 @@ function mostrarVictoria() {
     frutasContainer.style.margin = '20px 0';
     frutasContainer.style.fontSize = '80px';
     frutasContainer.style.cursor = 'pointer';
-    
+
     // el siguiente nivel usa el mismo tamaño
     const previewVals = generarValores(boardSize);
     const frutas = previewVals.filter(v => v !== null);
@@ -333,7 +334,7 @@ function mostrarVictoria() {
     frutasContainer.appendChild(frutaEl);
     box.appendChild(frutasContainer);
   }
-  
+
   const btnContainer = document.createElement('div');
   btnContainer.style.display = 'flex';
   btnContainer.style.justifyContent = 'center';
@@ -366,7 +367,7 @@ function irAlJuegoMemoria() {
   movimientos = 0;
   parejasEncontradas = 0;
   document.getElementById('movimientos').textContent = movimientos;
-  
+
   // si ya completamos todos los 9 niveles de memorizar
   if (nivelMemoria > maxLevelsPerSize) {
     const box = document.createElement('div');
@@ -388,10 +389,10 @@ function irAlJuegoMemoria() {
     document.body.appendChild(overlay);
     return;
   }
-  
+
   const nextSize = boardSize;
   const previewVals = generarValores(nextSize);
-  
+
   const box = document.createElement('div');
   box.className = 'message-box';
   // (el botón de inicio durante la fase interactiva se añade dentro de
@@ -530,16 +531,16 @@ function habilitarInteractividad(previewContainer, previewVals, size, onComplete
       const data = e.dataTransfer.getData('text/plain');
       // si la casilla ya se ocupó no hacemos nada
       if (cell.classList.contains('filled')) return;
-      
+
       // agregar clase de verificación (luces blancas)
       cell.classList.add('checking');
       cell.textContent = data;
-      
+
       // esperar 1 segundo mientras se verifica
       setTimeout(() => {
         cell.classList.remove('checking');
         const isCorrect = data === val;
-        
+
         if (isCorrect) {
           // colocación correcta - se pone verde
           cell.classList.add('correct');
@@ -626,7 +627,7 @@ function mostrarNivelEspecial(durationMs, callback) {
   const leftFruits = document.createElement('div');
   leftFruits.className = 'memoria-fruits left';
   // ejemplo de frutas laterales (puedes personalizar)
-  ['🍇','🍊','🍋','🍌','🍒','🍎'].forEach(f => {
+  ['🍇', '🍊', '🍋', '🍌', '🍒', '🍎'].forEach(f => {
     const fdiv = document.createElement('div');
     fdiv.className = 'fruit';
     fdiv.textContent = f;
@@ -635,7 +636,7 @@ function mostrarNivelEspecial(durationMs, callback) {
 
   const rightFruits = document.createElement('div');
   rightFruits.className = 'memoria-fruits right';
-  ['🥥','🥝','🍐','🍉','🥭','🥒'].forEach(f => {
+  ['🥥', '🥝', '🍐', '🍉', '🥭', '🥒'].forEach(f => {
     const fdiv = document.createElement('div');
     fdiv.className = 'fruit';
     fdiv.textContent = f;
@@ -648,10 +649,10 @@ function mostrarNivelEspecial(durationMs, callback) {
 
   // colores similares a la imagen de ejemplo
   const colores = [
-    '#6a0dad','#c71585','#ff4500','#ffd700',
-    '#7fff00','#00fa9a','#00ced1','#1e90ff',
-    '#4b0082','#0000cd','#4169e1','#0000ff',
-    '#ff69b4','#ff6347','#ffa500','#adff2f'
+    '#6a0dad', '#c71585', '#ff4500', '#ffd700',
+    '#7fff00', '#00fa9a', '#00ced1', '#1e90ff',
+    '#4b0082', '#0000cd', '#4169e1', '#0000ff',
+    '#ff69b4', '#ff6347', '#ffa500', '#adff2f'
   ];
 
   colores.forEach(col => {
@@ -700,7 +701,7 @@ window.iniciarJuego = iniciarJuego;
 function setBoardSize(size) {
   boardSize = size;
   document.querySelectorAll('.size-buttons button').forEach(btn => {
-    btn.classList.toggle('selected', parseInt(btn.dataset.size,10) === size);
+    btn.classList.toggle('selected', parseInt(btn.dataset.size, 10) === size);
   });
 }
 
@@ -713,7 +714,7 @@ function setTheme(theme) {
   const preview = document.getElementById('theme-preview');
   if (preview) {
     preview.innerHTML = '';
-    const symbols = seleccionarCartasPorTema().slice(0,6);
+    const symbols = seleccionarCartasPorTema().slice(0, 6);
     symbols.forEach(sym => {
       const sp = document.createElement('span');
       sp.className = 'preview-symbol';
